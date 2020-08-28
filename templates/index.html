@@ -12,8 +12,70 @@
     <div class="container-fluid">
         <div class="jumbotron text-center">
             <h1>Mission to Mars!</h1>
-            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+            <p><a class="btn btn-primary btn-lg" href="/scrape_all" role="button">Scrape Mars Data</a></p>
         </div>
+
+    <!-- Add section for Mars NEws -->
+    <div calls = "row">
+        <div class = "col-md-12">
+            <div class = "media">
+                <div class = "media-body">
+                    <h2>Latest Mars News</h2>
+                    <h4>{{planet.title}}</h4>
+                    <p>{{planet.paragraph}}</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Section for Main Iamge -->
+    <div class = "row">
+        <div class = "col-md-8">
+            <h2>Featured Mars Image</h2>
+                <img class = "img-responsive" src="{{planet.main_image | default('static/images/error.png', true)}}"  sytle = "max-width:100%; max-height:auto;" alt="">
+
+        </div>
+
+        <div class = "col-md-4">
+            <div class = "row">
+                <h4>Mars Facts</h4>
+                {{planet.html_table1 | safe }}
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <!-- section for the hemispheres -->
+    <div class ="row">
+        <div class = "page-header">
+            <h2 class = "text-center">Mars Hemispheres</h2>
+
+
+        </div>
+
+        {% for hemisphere in planet.hemisphere_image_urls %}
+        <div class = "col-md-3">
+            <div class = "thumbnail">
+                <img src="{{hemisphere.img_url | default('static/images/error.png', true)}}" alt="">
+                <div class = "caption">
+                    <h3>{{hemisphere.title}}</h3>
+
+                </div>
+
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
 </body>
 
 </html>
