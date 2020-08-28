@@ -56,7 +56,7 @@ def scrape_news():
     browser.quit()
 
     return title, news
-
+# scraping featured image
 def scrape_main_image():
     browser = home()
     

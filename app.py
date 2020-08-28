@@ -6,7 +6,6 @@ import scrape_mars
 app = Flask(__name__)
 
 # Use PyMongo to establish Mongo connection
-#What do I put after localhost?
 mongo = PyMongo(app, uri="mongodb://localhost:27017/mars_app")
 
 
@@ -16,7 +15,7 @@ def home():
 
     mars_dataDB = mongo.db.mars_data_collected.find_one()
 
-    #Return the tempalte and dadata
+    #Return the template and data
 
     return render_template("index.html", planet = mars_dataDB)
 
