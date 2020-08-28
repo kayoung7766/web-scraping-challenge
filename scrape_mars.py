@@ -89,6 +89,8 @@ def mars_table():
     tables = pd.read_html(url3)
     table1=tables[0]
     table1=table1.set_index(0)
+    table1.index.name = 'Description'
+    table1.columns = ['Mars']
     html_table1 = table1.to_html()
     
 
