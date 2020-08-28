@@ -71,7 +71,7 @@ def scrape_main_image():
         result=soup.find("div", class_ = "carousel_items")
         image=result.find("a", class_ = "button fancybox")
         link=(image['data-fancybox-href'])
-        full_link=urljpl+link
+        full_link="https://www.jpl.nasa.gov/"+link
     except AttributeError:
         return None
     
