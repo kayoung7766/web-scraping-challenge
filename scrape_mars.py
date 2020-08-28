@@ -88,9 +88,9 @@ def mars_table():
     url3="https://space-facts.com/mars/"
     tables = pd.read_html(url3)
     table1=tables[0]
-    #table2=tables[1]
+    table1=table1.set_index(0)
     html_table1 = table1.to_html()
-    #html_table2=table2.to_html()
+    
 
 
     browser.quit()
