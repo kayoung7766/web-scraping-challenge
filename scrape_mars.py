@@ -107,7 +107,6 @@ def mars_hemis():
     executable_path = {'executable_path': 'chromedriver.exe'}
     browser = Browser('chrome', **executable_path, headless=False)
     browser.visit(url4)
-    #Cerberus
     browser.visit(url4)
     html=browser.html
     soup = bs(html, 'html.parser')
@@ -117,6 +116,7 @@ def mars_hemis():
     link2.click()
     html=browser.html
     soup = bs(html, 'html.parser')
+    cerberus_title = browser.find_by_tag('h2').text.replace(" Enhanced", "")
     result= soup.find("img", class_= "wide-image")
     link_partial=result["src"]
     cerberus_link="https://astrogeology.usgs.gov"+link_partial
@@ -130,6 +130,7 @@ def mars_hemis():
     link2.click()
     html=browser.html
     soup = bs(html, 'html.parser')
+    schiaparelli_title = browser.find_by_tag('h2').text.replace(" Enhanced", "")
     result= soup.find("img", class_= "wide-image")
     link_partial=result["src"]
     schiaparelli_link="https://astrogeology.usgs.gov"+link_partial
@@ -143,6 +144,7 @@ def mars_hemis():
     link2.click()
     html=browser.html
     soup = bs(html, 'html.parser')
+    syrtis_major_title = browser.find_by_tag('h2').text.replace(" Enhanced", "")
     result= soup.find("img", class_= "wide-image")
     link_partial=result["src"]
     syrtis_major_link="https://astrogeology.usgs.gov"+link_partial
@@ -156,16 +158,17 @@ def mars_hemis():
     link2.click()
     html=browser.html
     soup = bs(html, 'html.parser')
+    valles_marineris_title = browser.find_by_tag('h2').text.replace(" Enhanced", "")
     result= soup.find("img", class_= "wide-image")
     link_partial=result["src"]
     valles_marineris_link="https://astrogeology.usgs.gov"+link_partial
     # creating a dictionary
     hemisphere_image_urls = [
-    {"title": "Valles Marineris Hemisphere", "img_url": valles_marineris_link},
-    {"title": "Cerberus Hemisphere", "img_url": cerberus_link},
-    {"title": "Schiaparelli Hemisphere", "img_url": schiaparelli_link},
-    {"title": "Syrtis Major Hemisphere", "img_url": syrtis_major_link},
-        ]
+        {"title": valles_marineris_title, "img_url": valles_marineris_link},
+        {"title": cerberus_title, "img_url": cerberus_link},
+        {"title": schiaparelli_title, "img_url": schiaparelli_link},
+        {"title": syrtis_major_title, "img_url": syrtis_major_link},
+    ]
     
     browser.quit()
 
